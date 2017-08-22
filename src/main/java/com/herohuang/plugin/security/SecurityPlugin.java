@@ -1,4 +1,4 @@
-package com.herohuang.plugin.shiro;
+package com.herohuang.plugin.security;
 
 import org.apache.shiro.web.env.EnvironmentLoaderListener;
 import org.apache.shiro.web.servlet.ShiroFilter;
@@ -16,11 +16,11 @@ import java.util.Set;
  * @date 20/08/2017
  * @since 1.0.0
  */
-public class ShiroPlugin implements ServletContainerInitializer {
+public class SecurityPlugin implements ServletContainerInitializer {
 
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
         // 设置初始化参数
-        servletContext.setInitParameter("shiroConfigLocations", "classpath:shiro.ini");
+        servletContext.setInitParameter("shiroConfigLocations", "classpath:heron-security.ini");
         // 注册Listener
         servletContext.addListener(EnvironmentLoaderListener.class);
         // 注册filter
