@@ -5,8 +5,6 @@ import com.herohuang.plugin.security.SecurityConfig;
 import com.herohuang.plugin.security.password.Md5CredentialsMatcher;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 
-import javax.activation.DataHandler;
-
 /**
  * jdbc realm 需要提供heron.plugin.security.jdbc.* 配置项
  *
@@ -17,7 +15,7 @@ import javax.activation.DataHandler;
 public class HeronJdbcRealm extends JdbcRealm {
 
     public HeronJdbcRealm() {
-        super.setDataSource(DatabaseHelper.getDataSource);
+        super.setDataSource(DatabaseHelper.getDataSource());
         super.setAuthenticationQuery(SecurityConfig.getJdbcAuthcQuery());
         super.setUserRolesQuery(SecurityConfig.getJdbcRolesQuery());
         super.setPermissionsQuery(SecurityConfig.getJdbcPermissionsQuery());

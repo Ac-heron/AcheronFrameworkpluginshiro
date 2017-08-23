@@ -19,7 +19,12 @@ public final class SecurityConfig {
 
     public static HeronSecurity getHeronSecurity() {
         String className = ConfigHelper.getString(SecurityConstant.HERON_SECURITY);
-        return (HeronSecurity) ReflectionUtil.newInstance(className);
+        try {
+            return (HeronSecurity) ReflectionUtil.newInstance(Class.forName(className));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static String getJdbcAuthcQuery() {
